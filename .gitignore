@@ -1,0 +1,12 @@
+# Arquivos Temporários
+*.ps1
+*.tmp
+*.log
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>n8n: Guia Completo para Criar Fluxos de Automação Sem Código | N.ACORE Blog</title>
+    <meta name="description" content="Aprenda a usar o n8n do zero: conecte APIs, CRMs, WhatsApp e Google Sheets sem escrever uma linha de código. Guia prático e completo da N.ACORE.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://nacore.com.br/blog/guia-n8n.html">
+    <meta property="og:title" content="n8n: Guia Completo para Criar Fluxos de Automação Sem Código">
+    <meta property="og:description" content="Do zero ao primeiro workflow: conecte APIs, CRM e WhatsApp com n8n sem programar.">
+    <meta property="og:type" content="article">
+    <link rel="icon" type="image/jpeg" href="../assets/logo.jpeg">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../blog.css">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"n8n: Guia Completo para Criar Fluxos de Automação Sem Código","author":{"@type":"Organization","name":"N.ACORE"},"publisher":{"@type":"Organization","name":"N.ACORE","url":"https://nacore.com.br"},"datePublished":"2026-04-08","description":"Guia prático para criar fluxos de automação com n8n sem escrever código."}
+    </script>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="../index.html"><img src="../assets/logo.jpeg" alt="N.ACORE Logo" class="logo-img"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html#inicio">Início</a></li>
+                <li><a href="../index.html#servicos">Soluções</a></li>
+                <li><a href="../index.html#planos">Planos</a></li>
+                <li><a href="index.html" style="color: var(--neon-cyan);">Blog</a></li>
+            </ul>
+            <a href="https://wa.me/550000000000" target="_blank" class="btn btn-outline">Falar com Especialista</a>
+        </div>
+    </header>
+
+    <div class="article-wrapper">
+        <a href="index.html" class="article-back"><i class='bx bx-arrow-back'></i> Voltar ao Blog</a>
+
+        <div class="article-header">
+            <span class="blog-card-badge badge-n8n">n8n</span>
+            <h1>n8n: Guia Completo para Criar Fluxos de Automação Sem Escrever Código</h1>
+            <div class="article-meta">
+                <span><i class='bx bx-user'></i> N.ACORE</span>
+                <span><i class='bx bx-calendar'></i> 8 de Abril de 2026</span>
+                <span><i class='bx bx-time-five'></i> 12 min de leitura</span>
+            </div>
+        </div>
+        <hr class="article-divider">
+
+        <div class="article-body">
+
+            <p>Se você ainda depende de copiar e colar dados entre sistemas, enviar e-mails manualmente ou atualizar planilhas toda semana, o <strong>n8n</strong> vai mudar a forma como você trabalha. De forma permanente.</p>
+
+            <p>Neste guia completo, vamos cobrir tudo: o que é o n8n, por que ele é superior ao Zapier para casos de uso técnicos, como instalar, e os fluxos mais poderosos que a N.ACORE implementa para clientes hoje.</p>
+
+            <h2>O que é o n8n?</h2>
+
+            <p>O <strong>n8n</strong> (pronuncia-se "n-eight-n") é uma plataforma de automação de fluxos de trabalho de código aberto (<em>open-source</em>). Diferente do Zapier ou Make, o n8n permite ser instalado e hospedado no seu próprio servidor, dando controle total sobre os dados e sem limite de execuções baseado em plano pago.</p>
+
+            <p>Ele funciona através de um editor visual drag-and-drop onde você conecta <strong>nós (nodes)</strong> — cada nó representa uma ação ou integração com um sistema externo. Hoje o n8n possui mais de 400 integrações nativas.</p>
+
+            <div class="highlight-box">
+                <h4><i class='bx bx-info-circle'></i> Por que usar n8n em vez de Zapier?</h4>
+                <ul>
+                    <li><strong>Open-source:</strong> você pode hospedar no seu servidor — seus dados ficam com você</li>
+                    <li><strong>Sem limite de execuções</strong> no plano self-hosted</li>
+                    <li><strong>Lógica condicional avançada</strong> com nós de If/Switch e loops</li>
+                    <li><strong>Código JavaScript</strong> disponível quando precisar de lógica customizada</li>
+                    <li><strong>Integrações com LLMs</strong> (OpenAI, Anthropic, Google Gemini) nativas</li>
+                </ul>
+            </div>
+
+            <h2>Conceitos Fundamentais do n8n</h2>
+
+            <h3>Trigger (Gatilho)</h3>
+            <p>Todo workflow começa com um trigger — o evento que inicia a automação. Pode ser:</p>
+            <ul>
+                <li>Um <strong>webhook</strong> recebendo dados de um formulário ou API externa</li>
+                <li>Um <strong>agendamento</strong> (ex: todo dia às 8h, toda segunda-feira)</li>
+                <li>Um <strong>evento de aplicativo</strong> (novo lead no CRM, pagamento confirmado, e-mail recebido)</li>
+            </ul>
+
+            <h3>Nós de Ação</h3>
+            <p>Após o trigger, você encadeia nós que executam ações: buscar dados, transformar informações, enviar mensagens, criar registros em banco de dados, chamar APIs etc.</p>
+
+            <h3>Expressões e Variáveis</h3>
+            <p>O n8n usa uma sintaxe de template para referenciar dados de nós anteriores. Por exemplo: <code>{{ $json.nome }}</code> referencia o campo "nome" do JSON recebido pelo nó anterior.</p>
+
+            <h2>Os 5 Workflows Mais Poderosos que Implementamos</h2>
+
+            <h3>1. Captura de Lead → CRM → WhatsApp em 30 segundos</h3>
+            <p>Quando um lead preenche um formulário no site, o n8n aciona automaticamente: cria o contato no CRM (HubSpot, RD Station, PipeDrive), envia uma mensagem de boas-vindas personalizada no WhatsApp e notifica o vendedor responsável no Slack ou Telegram. Tudo em menos de 30 segundos do envio do formulário.</p>
+
+            <h3>2. Relatório Automático de Ads</h3>
+            <p>Um workflow agendado busca dados das APIs do Google Ads e Meta Ads toda sexta-feira às 17h, consolida os números em uma planilha Google Sheets, gera um resumo em linguagem natural com GPT-4o e envia por e-mail para todos os gestores da conta.</p>
+
+            <div class="highlight-box">
+                <h4><i class='bx bx-code-alt'></i> Nós utilizados neste workflow</h4>
+                <p><code>Schedule Trigger</code> → <code>Google Ads node</code> → <code>Meta Ads node</code> → <code>Google Sheets</code> → <code>OpenAI</code> → <code>Gmail</code></p>
+            </div>
+
+            <h3>3. Follow-up Inteligente de Propostas</h3>
+            <p>Quando uma proposta fica sem resposta por 48h, o n8n detecta o status no CRM e dispara automaticamente uma sequência de follow-up via WhatsApp — com mensagens diferentes dependendo do estágio da negociação. Se o lead responder, o fluxo pausa e notifica o vendedor.</p>
+
+            <h3>4. Sincronização de Estoque entre Sistemas</h3>
+            <p>Para clientes com e-commerce e ERP separados, o n8n sincroniza o estoque a cada 15 minutos, garantindo que o site nunca venda produtos fora de estoque e que o ERP reflita as vendas online em tempo real.</p>
+
+            <h3>5. Emissão de NF-e Automática</h3>
+            <p>Após a confirmação de pagamento (via webhook do gateway de pagamento), o n8n chama a API da Nota Fiscal Eletrônica, emite a NF-e automaticamente e envia por e-mail para o cliente — sem que nenhum funcionário precise tocar no processo.</p>
+
+            <h2>Como Começar com n8n Hoje</h2>
+
+            <p>A forma mais rápida de testar é usar o <strong>n8n Cloud</strong> (plano gratuito disponível) ou instalar via Docker no seu servidor. Para uso em produção com clientes, recomendamos sempre o self-hosted pelo controle de dados e custo.</p>
+
+            <ol>
+                <li>Acesse <strong>n8n.io</strong> e crie uma conta no plano cloud gratuito</li>
+                <li>Crie seu primeiro workflow clicando em "New workflow"</li>
+                <li>Adicione um <strong>Webhook node</strong> como trigger e copie a URL gerada</li>
+                <li>Conecte um nó de ação (ex: <strong>Gmail</strong> ou <strong>Slack</strong>)</li>
+                <li>Teste enviando uma requisição para o webhook via Postman ou curl</li>
+            </ol>
+
+            <blockquote>"O n8n não é uma ferramenta de automação. É um sistema operacional para os processos da sua empresa." — André, co-fundador da N.ACORE</blockquote>
+
+            <h2>Erros Comuns ao Usar n8n</h2>
+
+            <ul>
+                <li><strong>Não tratar erros:</strong> sempre adicione nós de error handling para saber quando um workflow falha</li>
+                <li><strong>Workflows sem documentação:</strong> use notas ("sticky notes") para documentar a lógica de cada fluxo</li>
+                <li><strong>APIs sem autenticação segura:</strong> armazene credenciais nas variáveis de ambiente, nunca em texto no workflow</li>
+                <li><strong>Ausência de logs:</strong> configure notificações de falha para o Slack ou e-mail do time</li>
+            </ul>
+
+        </div>
+
+        <div class="article-cta">
+            <h3>Quer Implementar n8n na Sua Empresa?</h3>
+            <p>A N.ACORE cuida de toda a arquitetura, instalação e criação dos workflows — você só aprova o resultado. Sem curva de aprendizado para o seu time.</p>
+            <a href="https://wa.me/550000000000?text=Ol%C3%A1!%20Li%20o%20guia%20de%20n8n%20e%20quero%20implementar%20na%20minha%20empresa." target="_blank" class="btn btn-primary">Quero Implementar n8n</a>
+        </div>
+
+        <div class="related-articles">
+            <h3>Continue Lendo</h3>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-card-body">
+                        <span class="blog-card-badge badge-ai">Automação com IA</span>
+                        <h3>Como a IA Está Transformando Pequenas Empresas em 2026</h3>
+                        <p>O cenário completo da automação inteligente para PMEs.</p>
+                        <div class="blog-card-meta">
+                            <span><i class='bx bx-time-five'></i> 8 min</span>
+                            <a href="automacao-ia-2026.html" class="blog-read-link">Ler <i class='bx bx-right-arrow-alt'></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-card-body">
+                        <span class="blog-card-badge badge-mkt">Marketing Digital</span>
+                        <h3>As 5 Tendências de Marketing Digital que Vão Definir 2026</h3>
+                        <p>IA nos criativos, dados first-party e automação de funil.</p>
+                        <div class="blog-card-meta">
+                            <span><i class='bx bx-time-five'></i> 9 min</span>
+                            <a href="tendencias-marketing-2026.html" class="blog-read-link">Ler <i class='bx bx-right-arrow-alt'></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="../assets/logo.jpeg" alt="N.ACORE Logo">
+                <p>N.ACORE - Soluções Tecnológicas.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Contato</h4>
+                <p style="color: var(--text-muted)"><i class='bx bx-envelope'></i> contato@nacore.com.br</p>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2026 N.ACORE. Todos os direitos reservados.</p></div>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+</html>
